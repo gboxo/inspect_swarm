@@ -1,6 +1,6 @@
 [project]
 name = "inspect_swarm"
-dynamic = ["version"]
+version = "0.4.1"
 description = "Evals with multi-agent swarms (experimental)."
 authors = [{ name = "Meridian Labs" }]
 readme = "README.md"
@@ -39,7 +39,7 @@ Documentation = "https://meridianlabs-ai.github.io/inspect_swarm/"
 inspect_swarm = "inspect_swarm._entrypoint"
 
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.optional-dependencies]
@@ -84,15 +84,6 @@ only-packages = true
 exclude = ["docs/", "tests/", "design/"]
 artifacts = ["src/**/py.typed"]
 
-[tool.hatch.version]
-source = "vcs"
-
-[tool.hatch.build.hooks.vcs]
-version-file = "src/inspect_swarm/_version.py"
-
-[tool.hatch.version.raw-options]
-local_scheme = "no-local-version" # Important for PyPI compatibility
-
 [tool.uv]
 managed = true
 # 0.11.8 is the first uv that keeps uv.lock stable with a relative exclude-newer,
@@ -111,9 +102,6 @@ inspect-ai = "6 hours"
 # moves it to main's latest (.github/actions/uv-sync). The published package
 # requires the floor above, and the release PR's CI installs the newest
 # release instead.
-[tool.uv.sources]
-inspect-ai = { git = "https://github.com/UKGovernmentBEIS/inspect_ai", branch = "main" }
-
 [tool.ruff]
 extend-exclude = ["docs", "design"]
 src = [".", "src"]
